@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONVA 歴史編纂室 - 東歴1912</title>
+    <meta name="description" content="ONVA王国の公式歴史編纂室。建国から現在までの東暦連年史および言語文化の記録。" />
+    <meta property="og:title" content="ONVA 歴史編纂室" />
+    <meta property="og:description" content="ONVA王国の公式歴史編纂室。建国から現在までの東暦連年史および言語文化の記録。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ec2045.github.io/onva-history/" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
@@ -18,7 +24,7 @@
         .parchment {
             background: linear-gradient(to bottom, #1e293b, #0f172a);
             border: 1px solid #334155;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .gold-text {
@@ -60,10 +66,13 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body class="p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
         <!-- Header -->
@@ -76,7 +85,8 @@
         <div class="mb-12 p-6 rounded-xl border-glow bg-slate-800/50 text-center">
             <h3 class="text-lg font-bold mb-4 gold-text">現世のONVAポータル</h3>
             <p class="text-slate-300 mb-6">東歴から続く物語の「今」を確認する。</p>
-            <a href="https://ec2045.github.io/onva/" target="_blank" rel="noopener noreferrer" class="action-btn official-link-btn px-10 py-3 rounded-full font-bold text-white shadow-lg">
+            <a href="https://ec2045.github.io/onva/" target="_blank" rel="noopener noreferrer"
+                class="action-btn official-link-btn px-10 py-3 rounded-full font-bold text-white shadow-lg">
                 ONVA 公式サイトへ飛ぶ 🔗
             </a>
         </div>
@@ -87,7 +97,7 @@
                 <div class="loading-spinner mb-4"></div>
                 <p class="text-slate-400 italic">歴史記録「onva.txt」を読み込み中...</p>
             </div>
-            
+
             <div id="history-content" class="hidden text-lg leading-relaxed text-slate-200">
                 <!-- ここに onva.txt の中身が読み込まれます -->
             </div>
@@ -98,10 +108,12 @@
         </main>
 
         <!-- Download Section -->
-        <section class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-amber-700 rounded-xl">
+        <section
+            class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-amber-700 rounded-xl">
             <h3 class="text-xl font-bold mb-4">記録を物理的に保持する</h3>
             <p class="text-slate-400 mb-6 text-center">この歴史のすべてを再びテキストファイルとして書き出します。</p>
-            <button onclick="downloadHistory()" class="action-btn bg-amber-700 px-8 py-3 rounded-full font-bold text-white shadow-lg">
+            <button onclick="downloadHistory()"
+                class="action-btn bg-amber-700 px-8 py-3 rounded-full font-bold text-white shadow-lg">
                 onva.txt として保存 💾
             </button>
         </section>
@@ -113,7 +125,7 @@
 
     <script>
         // ページ読み込み時に onva.txt を取得する
-        window.onload = async function() {
+        window.onload = async function () {
             const historyEl = document.getElementById('history-content');
             const loadingEl = document.getElementById('loading');
             const errorEl = document.getElementById('error-message');
@@ -122,9 +134,9 @@
                 // fetch API を使用して外部ファイルを読み込む
                 const response = await fetch('onva.txt');
                 if (!response.ok) throw new Error('File not found');
-                
+
                 const text = await response.text();
-                
+
                 // コンテンツを流し込み、表示を切り替える
                 historyEl.textContent = text;
                 historyEl.classList.remove('hidden');
@@ -152,4 +164,5 @@
         }
     </script>
 </body>
+
 </html>
